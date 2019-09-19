@@ -1,0 +1,24 @@
+ #hello{
+    	margin: 76px;
+    	align-items: 50%;
+    }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+    #rows{
+      background-color: #f5f5f0;
+      }
+    #user{
+      color:#595959;
+      font-family: Courier New, monospace;
+    }
+    #button1{
+    	margin-left: 43%;
+    }
+    }

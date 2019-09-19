@@ -1,0 +1,72 @@
+ #search-data{
+        padding: 10px;
+        border: solid 1px #BDC7D8;
+        margin-bottom: 20px;
+        display: inline;
+        width: 100%;
+      }
+      .search-result{
+        border-bottom:solid 1px #BDC7D8;
+        padding:10px;
+        font-family:Times New Roman;
+        font-size: 20px;
+        color:blue;
+      }
+       #hello{
+    	margin: 76px;
+    	align-items: 50%;
+    }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+    #rows{
+      background-color: #f5f5f0;
+      }
+    #user{
+      color:#595959;
+      font-family: Courier New, monospace;
+    }
+    }
+    .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 30000px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
