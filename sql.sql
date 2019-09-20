@@ -68,7 +68,6 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`id`, `user`, `body`, `post_id`, `posted`) VALUES
 (27, 'Stephan!!', 'Hello! Good post', 25, '2019-09-19 13:03:30'),
-(30, 'stephan', '<h1>Hello</h1>!', 25, '2019-09-20 10:55:55'),
 (33, 'ana', 'Hello, This is Evgeny', 25, '2019-09-20 11:27:30'),
 (32, 'Hello how are you', 'Stephan!', 0, '2019-09-20 11:25:09'),
 (55, 'ana', 'ananananana', 25, '2019-09-20 13:53:17'),
@@ -99,8 +98,7 @@ INSERT INTO `user` (`id`, `fname`, `status`, `password`, `created`) VALUES
 (7, 'anan', 0, '63e62e141c89f160f6b0f2dc14fbefa0', '2019-09-19 15:09:02'),
 (6, 'ana', 0, '276b6c4692e78d4799c12ada515bc3e4', '2019-09-19 15:03:14'),
 (9, 'admin', 1, '21232f297a57a5a743894a0e4a801fc3', '2019-09-19 15:15:58'),
-(12, 'q', 0, '7694f4a66316e53c8cdd9d9954bd611d', '2019-09-20 12:09:36'),
-(14, '', 0, 'd41d8cd98f00b204e9800998ecf8427e', '2019-09-20 14:14:16');
+(12, 'q', 0, '7694f4a66316e53c8cdd9d9954bd611d', '2019-09-20 12:09:36');
 
 --
 -- Индексы сохранённых таблиц
