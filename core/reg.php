@@ -15,12 +15,12 @@ if ($password != $password2) {
 
 }else{
 
-if (null !==(trim($first))) {
+if (null !==($first)) {
 
      $con = new DB();
 
-	  $fname = mysqli_real_escape_string($con, $first);
-    $pass = md5(mysqli_real_escape_string($con, $password)); 
+	  $fname = mysqli_real_escape_string($con->_link, $first);
+    $pass = md5(mysqli_real_escape_string($con->_link, $password)); 
     $insert_vals = array();
 
       // проверяем если такой есть юзер

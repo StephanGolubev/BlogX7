@@ -88,7 +88,7 @@ class DB {
 
 	// считаем количество значений в таблице
     public function tableNumName($table,$name,$val){
-        $query = "SELECT COUNT(*) FROM `$table` WHERE $name=$val";
+        $query = "SELECT COUNT(*) FROM `$table` WHERE $name='$val'";
         return $this->query($query);
     }
 
@@ -98,7 +98,7 @@ class DB {
         return $this->query($query);
 	}
 	
-	// выбираем с двумя данными (можно было сделать круче...)
+	// выбираем с двумя данными
 	public function BuildSelectDouble($table,$key1,$key2,$val1,$val2){
 		$query =  "SELECT * FROM `$table` WHERE $key1 = '$val1' and $key2 = '$val2'";
 		return $this->query($query);
