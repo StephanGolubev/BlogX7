@@ -68,7 +68,6 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`id`, `user`, `body`, `post_id`, `posted`) VALUES
 (27, 'Stephan!!', 'Hello! Good post', 25, '2019-09-19 13:03:30'),
-(30, 'stephan', '<h1>Hello</h1>!', 25, '2019-09-20 10:55:55'),
 (33, 'ana', 'Hello, This is Evgeny', 25, '2019-09-20 11:27:30'),
 (32, 'Hello how are you', 'Stephan!', 0, '2019-09-20 11:25:09'),
 (55, 'ana', 'ananananana', 25, '2019-09-20 13:53:17'),
