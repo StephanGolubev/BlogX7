@@ -22,9 +22,6 @@ include('includes/imports.php');
 <main role="main" class="flex-shrink-0">
   <div class="container" id="hello">
     
-    <?php 
-	// echo "<h1 class='mt-5'>Hello " . $_SESSION["login_user"] . ".</h1><br><h4> Here you can see all the blog were writen:</h4>";
- ?>
   </div>
 
   <div class="container">

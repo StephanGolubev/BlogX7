@@ -11,6 +11,12 @@
 
 </head>
 <body class="text-center" style="background-color: #E5E7E9;"><br><br>
+   <header> 
+       <header> 
+ <?php 
+ include('includes/navbar.php');
+ ?>
+</header><br>
 	<h2>To log in fill this form:</h2><br><br>
 
 
@@ -24,8 +30,6 @@ if (isset($_SESSION['error'])) {
 }
 	 ?>
 </div>
-
-
 	<div class="container col-lg-6 col-md-12">
 		<div style="border: 2px solid black;border-radius: 8px; background-color: white"><br><br>
 	<div><a class="btn btn-primary" href="register.php" role="button">Or register hear</a></div><br>

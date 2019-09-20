@@ -9,6 +9,11 @@ session_start();
 
 </head>
 <body style="background-color: #E5E7E9;">
+       <header> 
+ <?php 
+ include('includes/navbar.php');
+ ?>
+</header><br><br><br>
 	
 <div>
 	<div id="welcome" class="container" style="text-align: center;">
@@ -50,12 +55,12 @@ session_start();
 </div>
 	</div>
 	</div>
-	
-
 <br><br>
 </div>
-</div>
-
+</div><br><br>
+<?php 
+	include('includes/footer.php');
+?>
 </body>
 </html>
 		

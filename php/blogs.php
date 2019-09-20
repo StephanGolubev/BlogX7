@@ -1,20 +1,16 @@
 <?php
    include('../core/db.php');
    session_start();
-
-    $con = new DB();
-    
+    $con = new DB();  
 ?>
-
   <head>
     <meta charset="utf-8">
     <title>All blogs</title>
     <?php 
       include('includes/imports.php');
     ?>
-<link rel="stylesheet" href="css/blog.css">
-<script src="js/blog.js"></script>
-<link href="sticky-footer-navbar.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/blog.css">   
+      <script src="js/blog.js"></script>
   </head>
 
   <body class="d-flex flex-column h-100">
@@ -44,23 +40,23 @@
           <?php 
          $newURL = "dashboard.php";
 
+        //  страницы
 if (isset($_GET['page_no']) && $_GET['page_no']!="") {
     $page_no = $_GET['page_no'];
     } else {
         $page_no = 1;
         }
-         $total_records_per_page = 3;
+         $total_records_per_page = 10;//10 записей на странице
 
-        $offset = ($page_no-1) * $total_records_per_page;
+        $offset = ($page_no-1) * $total_records_per_page; //всего
         $previous_page = $page_no - 1;
         $next_page = $page_no + 1;
-        $adjacents = "2";
          
         $result_count = $con->tableNum("blogs");
         $total_records = mysqli_fetch_array($result_count);
         $total_records = $total_records['total_records'];
         $total_no_of_pages = ceil($total_records / $total_records_per_page);
-        $second_last = $total_no_of_pages - 1; // total pages minus 1
+        $second_last = $total_no_of_pages - 1; // все страницы -1
 
     ?>
     <div>

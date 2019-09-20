@@ -1,34 +1,15 @@
 <?php
    include('../core/session.php');
 ?>
-
   <head>
     <meta charset="utf-8">
     <title>Dashboard</title>
 <?php 
-include('includes/imports.php');
+    include('includes/imports.php');
 ?>
-
-    <style>
-    #hello{
-    	align-items: 50%;
-    }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="sticky-footer-navbar.css" rel="stylesheet">
   </head>
   <body class="d-flex flex-column h-100">
-    <header>
+    <header> 
  <?php 
  include('includes/navbar.php');
  ?>
@@ -39,6 +20,7 @@ include('includes/imports.php');
   <div class="container" id="hello">
     
     <?php 
+    // определяем вход или нет
             if (!isset($_SESSION['user_login']) || $_SESSION['user_login'] == '') {
               echo "<h6>Not Logged in</h6>";
           }else{

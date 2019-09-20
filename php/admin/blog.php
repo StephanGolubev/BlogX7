@@ -8,13 +8,9 @@
     <meta charset="utf-8">
     <title>All blogs</title>
 <?php 
-include('../includes/imports.php');
+    include('../includes/imports.php');
 ?>
      <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-
-<link rel="stylesheet" href="css/blog.css">
-<script src="js/blog.js"></script>
-<link href="sticky-footer-navbar.css" rel="stylesheet">
   </head>
 
   <body class="d-flex flex-column h-100">
@@ -75,9 +71,6 @@ while ($row = mysqli_fetch_array($res)) {
 }
            
 ?>
-
- 
-
         </tbody>
         <tfoot>
            <tr>
@@ -102,9 +95,6 @@ while ($row = mysqli_fetch_array($res)) {
   
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-
-
-
 <script type="text/javascript">
 	$(document).ready(function() {
     $('#example').DataTable( {
@@ -112,8 +102,6 @@ while ($row = mysqli_fetch_array($res)) {
     } );
 } );
 </script>
-
-
 </body>
 
 </html>
