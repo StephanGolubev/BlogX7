@@ -21,8 +21,8 @@
         $query =  $con->insert('comment',$tables,$insert_vals);
           if ($query==TRUE) {
 		    $_SESSION['new_blog_title'] = $_POST['title'];
-        $page_referrer=$_SERVER['HTTP_REFERER'];
-        header('Location: '.$page_referrer);
+            $page_referrer=$_SERVER['HTTP_REFERER'];
+            header('Location: '.$page_referrer);
 		}
 	} else {
 		echo "Something went wrong, try again later!";

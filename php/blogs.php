@@ -3,7 +3,7 @@
    session_start();
 
     $con = new DB();
-    $res = $con->BuildSelect("blogs");
+    
 ?>
 
   <head>
@@ -65,6 +65,9 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
     ?>
     <div>
         <?php
+
+        // получаем блоги
+        $res = $con->BuildSelectLim("blogs",$offset,$total_records_per_page);
 
         while ($row = mysqli_fetch_array($res)) {
           $get = array("id"=>"{$row['id']}");

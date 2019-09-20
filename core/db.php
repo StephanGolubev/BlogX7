@@ -65,9 +65,15 @@ class DB {
 	
 	// функция формирования команды для получения все значений таблицы
 	public function BuildSelect($table){
-		$query =  "SELECT * FROM ".$table;
+		$query =  "SELECT * FROM ".$table." ORDER BY created";
 		return $this->query($query);
 	}
+
+	public function BuildSelectLim($table,$lim1,$lim2){
+		$query =  "SELECT * FROM ".$table." LIMIT $lim1, $lim2";
+		return $this->query($query);
+	}
+
 	// считаем количество значений в таблице
 	public function	numRows() {
 		if ($this->_link AND $this->_result)
