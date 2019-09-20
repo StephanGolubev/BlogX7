@@ -27,8 +27,8 @@ session_start();
 
 <form method="post" action="../core/reg.php">
 	<div id="inputs">
-	<h5>First name:</h5><br>
-	<input id="fname" type="text" name="fname" class="form-control" placeholder="Your name!" required autofocus>
+	<h5>Your email</h5><br>
+	<input id="fname" type="email" name="fname" class="form-control" placeholder="Your email!" required autofocus>
 	<br>
 	<h5>Password:</h5><br>
 	<input id="pass1" type="password" name="pass1" class="form-control" placeholder="Your password" required autofocus>

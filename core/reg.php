@@ -19,14 +19,23 @@ if (null !==($first)) {
 
      $con = new DB();
 
-	  $fname = mysqli_real_escape_string($con->_link, $first);
+    $fname = mysqli_real_escape_string($con->_link, $first);
+    // $fname = $first;
     $pass = md5(mysqli_real_escape_string($con->_link, $password)); 
     $insert_vals = array();
 
+    if (!filter_var($fname, FILTER_VALIDATE_EMAIL)) {
+        $error = "<h4>Not email</4>";
+        $_SESSION["status_login"] = $error;
+	      $page_referrer=$_SERVER['HTTP_REFERER'];
+        header('Location: '.$page_referrer);
+    }else {
+
       // проверяем если такой есть юзер
-      $res = $con->tableNumName("user","fname",$fname);
+      $res = $con->selectWithIdVar("user","fname" ,$fname);
+      $res_count = mysqli_num_rows($res);
       
-      if ($res > 0) {
+      if ($res_count > 0) {
         $error = "<h4>Try to use anouther user name! This one is bussy</4>";
         $_SESSION["status_login"] = $error;
 	      $page_referrer=$_SERVER['HTTP_REFERER'];
@@ -52,5 +61,6 @@ if (null !==($first)) {
 		}
       }
 		
-  } 	
+    } 	
+  }
 }

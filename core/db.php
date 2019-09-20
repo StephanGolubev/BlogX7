@@ -86,9 +86,9 @@ class DB {
         return $this->query($query);
     }
 
-	// считаем количество значений в таблице
-    public function tableNumName($table,$name,$val){
-        $query = "SELECT COUNT(*) FROM `$table` WHERE $name='$val'";
+	// считаем количество значений в таблице name
+    public function tableNumName($table,$val){
+        $query = "SELECT COUNT(*) FROM `$table` WHERE fname = '$val'";
         return $this->query($query);
     }
 
