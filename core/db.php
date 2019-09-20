@@ -65,7 +65,7 @@ class DB {
 	
 	// функция формирования команды для получения все значений таблицы
 	public function BuildSelect($table){
-		$query =  "SELECT * FROM ".$table." ORDER BY created";
+		$query =  "SELECT * FROM ".$table;
 		return $this->query($query);
 	}
 

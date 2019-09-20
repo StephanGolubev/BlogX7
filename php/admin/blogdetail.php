@@ -43,9 +43,6 @@ include('../includes/imports.php');
           $con = new DB();
           $res = $con->selectWithIdVar("blogs","id",$num);
 
-          // $dt = "SELECT * FROM `blogs` WHERE id=$num";
-          // $result = mysqli_query($db,$dt) or die( mysqli_error($db));
-
           	while ($row = mysqli_fetch_array($res)) {
             		echo "<div id='rows' style='text-align: center;background-color: #E6E6FA;'><h6><a href='../blogdetail.php?id={$row['id']}'>{$row['title']}</a></h6>
             		Текст задания: {$row['body']}<div id='user'>В уроке: Урок номер : {$row['title']}</a></div><p id='user'>Место в уроке : {$row['title']}</p>

@@ -58,10 +58,7 @@ include('../includes/imports.php');
 <?php
     $con = new DB();
     $res = $con->BuildSelect("comment");
-// $dt = "SELECT * FROM blogs ORDER BY created";
-// $result = mysqli_query($db,$dt) or die( mysqli_error($db));
-
-
+    
 while ($row = mysqli_fetch_array($res)) {
          echo "<tr>
                 <td>{$row['id']}</td>
@@ -69,10 +66,7 @@ while ($row = mysqli_fetch_array($res)) {
                 <td>{$row['body']}</td>
                 <td>{$row['posted']}</td>";
                  echo "<td><a href='../../core/admin/deletecomment.php?id={$row['id']}'>Delete
-        </a><br><a href='commentdetail.php?id={$row['id']}'>Edit</a></td></tr>";          
-
-            
-
+        </a><br><a href='commentdetail.php?id={$row['id']}'>Edit</a></td></tr>";
 }
            
 ?>
