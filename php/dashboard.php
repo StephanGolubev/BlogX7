@@ -45,8 +45,6 @@ include('includes/imports.php');
             if ($_SESSION['user_login'] == "true") {
               echo "<h6>Logged in!</h6>";
             }
-            // echo "<h6>". $_SESSION['user_login']."</h6>";
-            // unset($_SESSION['user_login']);
           }
            ?>
   </div>
@@ -54,7 +52,6 @@ include('includes/imports.php');
       <div class="row">
         <div class="col-lg-8 col-md-12">
           <p>
-    Do you want to whrite knew blog or comment? Go here: <a href="newblog.php"> New blog!</a>
     </p>
         </div>
         <div class="col-lg-4 col-md-12" id="main">

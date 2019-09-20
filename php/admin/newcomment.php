@@ -41,21 +41,39 @@ include('../includes/imports.php');
   <body class="bg-light">
     <div class="container">
   <div class="py-5 text-center">
-    <h2>Creating new blog</h2>
+    <h2>Creating new comment</h2>
     </div>
-    <form method="post" action="../../core/admin/createblog.php">
+    <form method="post" action="../../core/admin/createcomment.php">
 
         <div class="mb-3">
-          <label for="username">Title of your new post</label>
+          <label for="username">User of your new comment</label>
           <div class="input-group">
-            <input name="title" type="text" class="form-control" id="title" placeholder="Title" required>
+            <input name="user" type="text" class="form-control" id="title" placeholder="User" required>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="text" >Blog text</label>
-          <textarea name="text" id="textinput" type="text" class="form-control" id="address" autocomplete="off" required ></textarea>
+          <label for="username">Choose the blog:</label>
+          <div class="input-group">
+            <!-- <input name="blog_id" type="text" class="form-control" id="title" placeholder="id" required> -->
+            <select name="blog_id">
+                <?php
+                include('../../core/db.php');
 
+                $con = new DB();
+                $res = $con->BuildSelect("blogs");
+
+                while ($row = mysqli_fetch_array($res)) {
+                echo "<option value='{$row['id']}'>{$row['title']}</option>";
+                }
+                ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="text" >Comment text</label>
+          <textarea name="text" id="textinput" type="text" class="form-control" id="address" autocomplete="off" required ></textarea>
         </div>
         <button id="button" class="btn btn-primary btn-lg btn-block" type="submit">Post my blog!</button>
         </form>

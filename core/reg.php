@@ -1,10 +1,10 @@
 <?php 
-include("config.php");
+include("db.php");
 session_start();
 
-$first = $_POST['fname'];
-$password = $_POST['pass1'];
-$password2 = $_POST['pass2'];
+$first = htmlspecialchars($_POST['fname']);
+$password = htmlspecialchars($_POST['pass1']);
+$password2 = htmlspecialchars($_POST['pass2']);
 
 if ($password != $password2) {
   
@@ -17,21 +17,30 @@ if ($password != $password2) {
 
 if (null !==(trim($first))) {
 
-	  $fname = mysqli_real_escape_string($db, $first);
-    $pass = md5(mysqli_real_escape_string($db, $password)); 
-      
-      $sql = "SELECT * FROM user WHERE fname = '$fname'";
-      $result = mysqli_query($db,$sql) or die( mysqli_error($db));
-      $row_cnt = $result->num_rows;
+     $con = new DB();
 
-      if ($row_cnt > 0) {
-        $error = "<h2>Try to use anouther user name! This one is bussy</2>";
+	  $fname = mysqli_real_escape_string($con, $first);
+    $pass = md5(mysqli_real_escape_string($con, $password)); 
+    $insert_vals = array();
+
+      // проверяем если такой есть юзер
+      $res = $con->tableNumName("user","fname",$fname);
+      
+      if ($res > 0) {
+        $error = "<h4>Try to use anouther user name! This one is bussy</4>";
         $_SESSION["status_login"] = $error;
 	      $page_referrer=$_SERVER['HTTP_REFERER'];
         header('Location: '.$page_referrer);
       }else{
-      	$sql= "INSERT INTO user (`fname`, `password`,`status`) VALUES ('$fname', '$pass','0')";
-      	if ($db->query($sql)==TRUE) {
+
+        // данные для записи
+        $tables = array('fname', 'password', 'status');
+        array_push($insert_vals, $fname);
+        array_push($insert_vals, $pass);
+        array_push($insert_vals, "0");
+
+        $query =  $con->insert('user',$tables,$insert_vals);
+          if ($query==TRUE) {
       
           $_SESSION["user_login"] = "true";
           $_SESSION["status_login"] = "true";

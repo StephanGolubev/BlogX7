@@ -5,7 +5,7 @@ class DB {
 	protected $_user = 'root';
 	protected $_password = '';
  	protected $_database = 'x';
-	protected $_link;
+	public $_link;
 	protected $_result;
 	protected static $_db;
 	private static $_instance;
@@ -54,8 +54,6 @@ class DB {
 		$query = "INSERT INTO "."`".$table."`"." (";
 		foreach ((array) $name AS $key => $value)
 			$query .= "`".$value."`, ";
-		// foreach ($values AS $key => $value)
-		// 	$query .= $key.', ';
 		$query = rtrim($query, " ,")."".") VALUES (";
 		foreach ($values AS $key => $value)
 			$query .= "'".$value."' , ";
@@ -75,16 +73,41 @@ class DB {
 		if ($this->_link AND $this->_result)
 			return mysqli_num_rows($this->_result);
     }
-    
+	
+	// считаем количество значений в таблице
     public function tableNum($table){
         $query = "SELECT COUNT(*) AS total_records FROM `$table`";
         return $this->query($query);
     }
 
-    public function selectWithIdVar($table,$nameID,$id){
-        $query = "SELECT * FROM `$table` WHERE $nameID=$id";
+	// считаем количество значений в таблице
+    public function tableNumName($table,$name,$val){
+        $query = "SELECT COUNT(*) FROM `$table` WHERE $name=$val";
         return $this->query($query);
     }
 
+	// выбираем из базы по id и с разными названиями id
+    public function selectWithIdVar($table,$nameID,$id){
+        $query = "SELECT * FROM `$table` WHERE $nameID=$id";
+        return $this->query($query);
+	}
+	
+	// выбираем с двумя данными (можно было сделать круче...)
+	public function BuildSelectDouble($table,$key1,$key2,$val1,$val2){
+		$query =  "SELECT * FROM `$table` WHERE $key1 = '$val1' and $key2 = '$val2'";
+		return $this->query($query);
+	}
+
+	// удаляем данные
+	public function deleteSom($table,$name,$val){
+		$query =  "DELETE FROM `$table` WHERE $name=$val";
+		return $this->query($query);
+	}
+
+	// обновляем данные
+	public function update($table,$name1,$name2,$val1,$val2,$id){
+		$query =  "UPDATE `$table` SET $name1='".$val1."',$name2='".$val2."' WHERE id=$id";
+		return $this->query($query);
+	}
 }
 ?>

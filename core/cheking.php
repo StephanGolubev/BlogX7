@@ -1,17 +1,19 @@
 <?php
-   include("config.php");
+   include("db.php");
    session_start();
    $newURL = "../php/dashboard.php";
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
-      
-      $myusername = mysqli_real_escape_string($db, $_POST['firstname']);
-      $mypassword = md5(mysqli_real_escape_string($db, $_POST['password'])); 
-      
-      $sql = "SELECT * FROM user WHERE fname = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($db,$sql) or die( mysqli_error($db));
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+      $con = new DB();
+
+      $myusername = mysqli_real_escape_string($con->_link, $_POST['firstname']);
+      $mypassword = md5(mysqli_real_escape_string($con->_link, $_POST['password'])); 
+
+      $res = $con->BuildSelectDouble("user","fname","password",$myusername,$mypassword);
+
+      $row = mysqli_fetch_array($res,MYSQLI_ASSOC);
       $pass = $row['password'];
       $id = $row['id'];
       

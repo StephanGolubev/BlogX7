@@ -49,20 +49,18 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
     } else {
         $page_no = 1;
         }
-   			// $creater = $_SESSION["login_user"];
-         $x=0;
          $total_records_per_page = 3;
 
-    $offset = ($page_no-1) * $total_records_per_page;
-    $previous_page = $page_no - 1;
-    $next_page = $page_no + 1;
-    $adjacents = "2";
+        $offset = ($page_no-1) * $total_records_per_page;
+        $previous_page = $page_no - 1;
+        $next_page = $page_no + 1;
+        $adjacents = "2";
          
-    $result_count = $con->tableNum("blogs");
-    $total_records = mysqli_fetch_array($result_count);
-    $total_records = $total_records['total_records'];
-    $total_no_of_pages = ceil($total_records / $total_records_per_page);
-    $second_last = $total_no_of_pages - 1; // total pages minus 1
+        $result_count = $con->tableNum("blogs");
+        $total_records = mysqli_fetch_array($result_count);
+        $total_records = $total_records['total_records'];
+        $total_no_of_pages = ceil($total_records / $total_records_per_page);
+        $second_last = $total_no_of_pages - 1; // total pages minus 1
 
     ?>
     <div>
@@ -88,42 +86,43 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
       </div>
       
 
-<div style='padding: 10px 20px 0px; border-top: dotted 1px #CCC;'>
-<strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong>
+<div>
+    <strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong>
 </div>
 
 
 <!-- Страницы -->
 
 <ul class="pagination">
-<?php if($page_no > 1){
-    echo "<li><a href='?page_no=1'>First Page</a></li>";
-} ?>
+  <?php if($page_no > 1){
+    echo "&nbsp;&nbsp;<li><a href='?page_no=1'> &nbsp;|&nbsp; Первая страница &nbsp;|&nbsp; </a></li>";
+  } ?>
     
 <li <?php if($page_no <= 1){ echo "class='disabled'"; } ?>>
-<a <?php if($page_no > 1){
+  <a <?php if($page_no > 1){
     echo "href='?page_no=$previous_page'";
-} ?>>Previous</a>
+  } ?>>    Предыдущая    </a>
 </li>
-    
+    <?php echo "&nbsp;|&nbsp;";
+     ?>
 <li <?php if($page_no >= $total_no_of_pages){
       echo "class='disabled'";} ?>>
-<a <?php if($page_no < $total_no_of_pages) {
-echo "href='?page_no=$next_page'";} ?>>Next</a>
+  <a <?php if($page_no < $total_no_of_pages) {
+    echo "href='?page_no=$next_page'";} ?>>  Следущая   </a>
 </li>
  
 <?php if($page_no < $total_no_of_pages){
-    echo "<li><a href='?page_no=$total_no_of_pages'>Last>></a></li>";
-} ?>
+    echo "&nbsp;|&nbsp;<li><a href='?page_no=$total_no_of_pages'>  &nbsp;&nbsp; Последняя>>  &nbsp; </a></li>";
+  } ?>
 </ul>
 
 </main>
 
 <?php 
-include('includes/footer.php');
+  include('includes/footer.php');
 ?>
 </body>
 <?php 
-include('includes/jsimport.php');
+  include('includes/jsimport.php');
 ?>
 </html>

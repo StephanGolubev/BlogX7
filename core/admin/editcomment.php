@@ -1,20 +1,17 @@
 <?php
-   include("../config.php");
-   session_start();
+  require('../db.php');
+  $con = new DB();
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form
 
+    $id = mysqli_real_escape_string($con->_link, $_POST['id']);
+    $name = mysqli_real_escape_string($con->_link, $_POST['name']);
+    $text = mysqli_real_escape_string($con->_link, $_POST['text']);
 
-    $id = mysqli_real_escape_string($db, $_POST['id']);
-    $name = mysqli_real_escape_string($db, $_POST['name']);
-    $text = mysqli_real_escape_string($db, $_POST['text']);
+     $res = $con->update("comment","body","user",$name, $text, $id);
 
-    // $myusername = mysqli_real_escape_string($db, $creater);
-    // $id = $_SESSION['user_id'];
-
-    $sql= "UPDATE comment SET body='".$name."',user='".$text."' WHERE id=$id";
-    if ($db->query($sql)==TRUE) {
+    if ($res==TRUE) {
 		// $_SESSION['new_blog_title'] = $_POST['title'];
         $page_referrer=$_SERVER['HTTP_REFERER'];
         header('Location: '.$page_referrer);

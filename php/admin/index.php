@@ -19,3 +19,15 @@ include('../includes/imports.php');
       include('navbar.php');
     ?>
     </header>
+
+<div class="container">
+  <div class="row">
+      <div class="col-6">
+        <p><h4>New blog: <a href="newblog.php">Create new blog</a></h4></p>
+      </div>
+      <div class="col-6">
+        <p><h4>New blog: <a href="newcomment.php">Create new comment</a></h4></p>
+      </div>
+  </div>
+    
+</div>

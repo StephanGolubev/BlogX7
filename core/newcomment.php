@@ -1,11 +1,12 @@
-<?php
-   include('session.php');
-?>
 <?php 
-	$comment =  mysqli_real_escape_string($db, $_POST['comment']);
-	$user =  mysqli_real_escape_string($db, $_POST['user']);
-	$number =  mysqli_real_escape_string($db, $_POST['number']);
-	$sql = "INSERT INTO comment (`user`, `body`, `post_id`) VALUES ('$user', '$comment', '$number')";
+include("db.php");
+session_start();
+
+	$con = new DB();
+
+	$comment =  htmlspecialchars(mysqli_real_escape_string($con->_link, $_POST['comment']));
+	$user =  htmlspecialchars(mysqli_real_escape_string($con->_link, $_POST['user']));
+	$number =  mysqli_real_escape_string($con->_link, $_POST['number']);
 
 	if (!isset($_SESSION['user_login']) || $_SESSION['user_login'] == '') {
 
@@ -16,11 +17,18 @@
 				   
           }else{
             if ($_SESSION['user_login'] == "true") {
-			  $result = $db->query($sql);
+				$insert_vals = array();
 
-			  if ($result) {
+				$tables = array('user', 'body', 'post_id');
+        		array_push($insert_vals, $user);
+        		array_push($insert_vals, $comment);
+        		array_push($insert_vals, $number);
+
+			  $query =  $con->insert('comment',$tables,$insert_vals);
+
+			  if ($query==TRUE) {
 		$page_referrer=$_SERVER['HTTP_REFERER'];
-		$suc = '<div style="color: green;">Your comment has been saved!</div>';
+		$suc = '<div style="color: green;">Your comment has been saved '.$comment.'</div>';
 		$_SESSION["status"] = $suc;
         header('Location: '.$page_referrer);
 			}else{
@@ -32,7 +40,3 @@
             }
 		  }
 		  
-
-	
-
- ?>
