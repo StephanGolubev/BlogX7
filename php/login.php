@@ -36,7 +36,7 @@ if (isset($_SESSION['error'])) {
 
 <form class="form-signin" action="../core/cheking.php" method="post" >
 	<h1 class="h3 mb-3 font-weight-normal">Email<br></h1>
-	<input type="name" name="firstname" class="form-control" placeholder="Your email!" required autofocus>
+	<input type="email" name="firstname" class="form-control" placeholder="Your email!" required autofocus>
 	<br>
 	<h1 class="h3 mb-3 font-weight-normal">Password:<br></h1>
 	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">

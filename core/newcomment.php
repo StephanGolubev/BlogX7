@@ -17,6 +17,16 @@ session_start();
 				   
           }else{
             if ($_SESSION['user_login'] == "true") {
+
+				if (trim($comment," ") == null and trim($user," ") == null){
+					$error = '<div style="color: red;">Bag input</div>';
+					$_SESSION["status"] = $error;
+					$page_referrer=$_SERVER['HTTP_REFERER'];
+        			header('Location: '.$page_referrer);
+				}else {
+					
+				
+
 				$insert_vals = array();
 
 				$tables = array('user', 'body', 'post_id');
@@ -35,7 +45,8 @@ session_start();
 		$error = '<div style="color: red;">Something went wrong, please try again later</div>';
 		$_SESSION["status"] = $error;
 		$page_referrer=$_SERVER['HTTP_REFERER'];
-        header('Location: '.$page_referrer);
+		header('Location: '.$page_referrer);
+			}
 				}
             }
 		  }

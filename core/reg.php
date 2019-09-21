@@ -15,7 +15,7 @@ if ($password != $password2) {
 
 }else{
 
-if (null !==($first)) {
+if (trim($first," ") != null and trim($password," ") != null){
 
      $con = new DB();
 
@@ -62,5 +62,10 @@ if (null !==($first)) {
       }
 		
     } 	
+  }else {
+    $error = "<h4>Bag input</4>";
+      $_SESSION["status_login"] = $error;
+	      $page_referrer=$_SERVER['HTTP_REFERER'];
+        header('Location: '.$page_referrer);
   }
 }
