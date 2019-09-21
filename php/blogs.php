@@ -52,8 +52,10 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
         $previous_page = $page_no - 1;
         $next_page = $page_no + 1;
          
+        // получаем блоги и считаем их количество для страниц
         $result_count = $con->tableNum("blogs");
         $total_records = mysqli_fetch_array($result_count);
+      
         $total_records = $total_records['total_records'];
         $total_no_of_pages = ceil($total_records / $total_records_per_page);
         $second_last = $total_no_of_pages - 1; // все страницы -1
@@ -72,6 +74,7 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
           echo "<div id='rows'><h4><a href='$url'>{$row['title']}</a></h4><div id='user'>
         </div><p id='user'>Created: {$row['created']}</p><br>
         ";
+        // обрезаем часть текста
         $text_cropped = substr($row['body'],0,500);
         echo "{$text_cropped}...
         <br>

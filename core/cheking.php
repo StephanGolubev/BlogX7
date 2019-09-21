@@ -3,14 +3,16 @@
    session_start();
    $newURL = "../php/dashboard.php";
 
+   // проверка токеном
    if ($_POST['token'] == $_SESSION['token']){
    
+      // если пост метод
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
 
       $con = new DB();
 
       $myusername = mysqli_real_escape_string($con->_link, $_POST['firstname']);
+      // кодируем строку
       $mypassword = md5(mysqli_real_escape_string($con->_link, $_POST['password'])); 
 
       $res = $con->BuildSelectDouble("user","fname","password",$myusername,$mypassword);
@@ -20,6 +22,7 @@
       $id = $row['id'];
       
 
+      // если админ, то сохраняем как админ
       if($mypassword == $pass) {
          if ($row['status']) {
          $_SESSION['admin'] = "true";

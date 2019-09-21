@@ -1,4 +1,5 @@
 <?php 
+// проверяем что в админ панели админ а не кто-то другой
  if (!isset($_SESSION['user_login']) || $_SESSION['user_login'] == '') {
               header("location:../dashboard.php");
               die();

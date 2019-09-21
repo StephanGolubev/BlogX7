@@ -7,7 +7,6 @@
     $mytitle = mysqli_real_escape_string($con->_link, $_POST['title']);
     $mytext = mysqli_real_escape_string($con->_link, $_POST['text']);
       
-    // $sql= "INSERT INTO blogs (`title`, `body`) VALUES ('$mytitle', '$mytext')";
     $insert_vals = array();
 
         $tables = array('title', 'body');

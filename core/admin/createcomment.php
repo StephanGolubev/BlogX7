@@ -8,9 +8,6 @@
     $mytext = mysqli_real_escape_string($con->_link, $_POST['text']);
     $blog_id = mysqli_real_escape_string($con->_link, $_POST['blog_id']);
     $insert_vals = array();
-      
-    // $sql= "INSERT INTO comment (`user`, `body`,`post_id`) VALUES ('$mytitle', '$mytext', '$blog_id')";
-    // if ($db->query($sql)==TRUE) {
 
          // данные для записи
         $tables = array('user', 'body', 'post_id');

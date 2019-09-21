@@ -69,6 +69,7 @@ class DB {
 		return $this->query($query);
 	}
 
+	// выбираем с лимитом
 	public function BuildSelectLim($table,$lim1,$lim2){
 		$query =  "SELECT * FROM ".$table." LIMIT $lim1, $lim2";
 		return $this->query($query);

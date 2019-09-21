@@ -43,9 +43,8 @@ include('includes/imports.php');
         
 
         $con = new DB();
+        // получаем данные
         $res = $con->selectWithIdVar("blogs","id",$num);
-				// $dt = "SELECT * FROM `blogs` WHERE id=$num";
-				// $result = mysqli_query($db,$dt) or die( mysqli_error($db));
 				
 		  ?> 	
 		  <?php 
@@ -66,7 +65,7 @@ include('includes/imports.php');
 
           }
 
-          // защита!
+          // защита токеном
             $token = md5(uniqid(rand(), TRUE));
             $_SESSION['token'] = $token;
            ?>
@@ -77,6 +76,7 @@ include('includes/imports.php');
           <input name="comment" id="textinput" type="text" class="form-control" id="address" placeholder="Your comment" required><br>
           <input name="user" id="textinput" type="text" class="form-control" id="user" placeholder="Your Name" required>
           <input type="hidden" name="number" id="hiddenField" value="<?php echo $num ?>" />
+          <!-- токен -->
           <input type="hidden" name="token" value="<?php echo $token; ?>" />
         </div>
         <button id="button1" class="btn btn-primary btn-lg btn-sm" type="submit">Post my Comment!</button>

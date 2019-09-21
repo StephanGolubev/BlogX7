@@ -12,7 +12,7 @@
      $res = $con->update("comment","body","user",$name, $text, $id);
 
     if ($res==TRUE) {
-		// $_SESSION['new_blog_title'] = $_POST['title'];
+		$_SESSION['new_blog_title'] = $name;
         $page_referrer=$_SERVER['HTTP_REFERER'];
         header('Location: '.$page_referrer);
 		}

@@ -6,8 +6,10 @@ $first = htmlspecialchars($_POST['fname']);
 $password = htmlspecialchars($_POST['pass1']);
 $password2 = htmlspecialchars($_POST['pass2']);
 
+// защита токеном
 if ($_POST['token'] == $_SESSION['token']){
 
+  // одинаковые пароли
 if ($password != $password2) {
   
   $error = '<div style="color: red;">Password does not match, Try again</div>';
@@ -16,8 +18,8 @@ if ($password != $password2) {
   header('Location: '.$page_referrer);
 
 }else{
-
-if (trim($first," ") != null and trim($password," ") != null){
+// не пустые строки
+if (trim($first," ") != null or trim($password," ") != null){
 
      $con = new DB();
 
@@ -26,6 +28,7 @@ if (trim($first," ") != null and trim($password," ") != null){
     $pass = md5(mysqli_real_escape_string($con->_link, $password)); 
     $insert_vals = array();
 
+    //  проверяем что это почта
     if (!filter_var($fname, FILTER_VALIDATE_EMAIL)) {
         $error = "<h4>Not email</4>";
         $_SESSION["status_login"] = $error;
@@ -50,6 +53,7 @@ if (trim($first," ") != null and trim($password," ") != null){
         array_push($insert_vals, $pass);
         array_push($insert_vals, "0");
 
+        // делаем запись
         $query =  $con->insert('user',$tables,$insert_vals);
           if ($query==TRUE) {
       

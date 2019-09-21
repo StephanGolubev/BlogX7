@@ -28,6 +28,7 @@ if (isset($_SESSION['error'])) {
 }else{
 	
 }
+	// защита токеном
 	$token = md5(uniqid(rand(), TRUE));
 	$_SESSION['token'] = $token;
 
@@ -44,6 +45,7 @@ if (isset($_SESSION['error'])) {
 	<h1 class="h3 mb-3 font-weight-normal">Password:<br></h1>
 	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
 
+	<!-- токен -->
 	<input type="hidden" name="token" value="<?php echo $token; ?>" />
 
 	<br><br>

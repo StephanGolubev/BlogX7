@@ -8,8 +8,10 @@ session_start();
 	$user =  htmlspecialchars(mysqli_real_escape_string($con->_link, $_POST['user']));
 	$number =  mysqli_real_escape_string($con->_link, $_POST['number']);
 
+	// защита токеном
 	if ($_POST['token'] == $_SESSION['token']){
 
+		// проверяем вход
 	if (!isset($_SESSION['user_login']) || $_SESSION['user_login'] == '') {
 
                 $page_referrer=$_SERVER['HTTP_REFERER'];
@@ -18,16 +20,16 @@ session_start();
 				header('Location: '.$page_referrer);
 				   
           }else{
+			  		// проверяем вход
             if ($_SESSION['user_login'] == "true") {
 
-				if (trim($comment," ") == null and trim($user," ") == null){
+				// не пустая строка
+				if (trim($comment," ") == null or trim($user," ") == null){
 					$error = '<div style="color: red;">Bag input</div>';
 					$_SESSION["status"] = $error;
 					$page_referrer=$_SERVER['HTTP_REFERER'];
         			header('Location: '.$page_referrer);
 				}else {
-					
-				
 
 				$insert_vals = array();
 
@@ -36,6 +38,7 @@ session_start();
         		array_push($insert_vals, $comment);
         		array_push($insert_vals, $number);
 
+				// вставляем данные
 			  $query =  $con->insert('comment',$tables,$insert_vals);
 
 			  if ($query==TRUE) {

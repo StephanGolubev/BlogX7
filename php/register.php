@@ -13,6 +13,7 @@ session_start();
  <?php 
  include('includes/navbar.php');
 
+		// защита токеном
 		$token = md5(uniqid(rand(), TRUE));
 		$_SESSION['token'] = $token;
 
@@ -40,6 +41,7 @@ session_start();
 	<h5>Password again:</h5><br>
 	<input  type="password" id="pass2" name="pass2" class="form-control" placeholder="Password again" required autofocus>
 
+<!-- токен -->
 	<input type="hidden" name="token" value="<?php echo $token; ?>" />
 
 	<br><br>
