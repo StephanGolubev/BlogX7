@@ -28,6 +28,9 @@ if (isset($_SESSION['error'])) {
 }else{
 	
 }
+	$token = md5(uniqid(rand(), TRUE));
+	$_SESSION['token'] = $token;
+
 	 ?>
 </div>
 	<div class="container col-lg-6 col-md-12">
@@ -40,6 +43,9 @@ if (isset($_SESSION['error'])) {
 	<br>
 	<h1 class="h3 mb-3 font-weight-normal">Password:<br></h1>
 	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
+
+	<input type="hidden" name="token" value="<?php echo $token; ?>" />
+
 	<br><br>
 	<button class="btn btn-lg btn-primary btn-block" type="sudmit">Sudmit</button>
 	<label>

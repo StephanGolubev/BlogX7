@@ -2,6 +2,8 @@
    include("db.php");
    session_start();
    $newURL = "../php/dashboard.php";
+
+   if ($_POST['token'] == $_SESSION['token']){
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
@@ -34,4 +36,7 @@
          header('Location: '.$page_referrer);
       }
    }
+}else {
+   header('Location: ../php/blogs.php');
+}
 ?>

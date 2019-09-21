@@ -8,6 +8,8 @@ session_start();
 	$user =  htmlspecialchars(mysqli_real_escape_string($con->_link, $_POST['user']));
 	$number =  mysqli_real_escape_string($con->_link, $_POST['number']);
 
+	if ($_POST['token'] == $_SESSION['token']){
+
 	if (!isset($_SESSION['user_login']) || $_SESSION['user_login'] == '') {
 
                 $page_referrer=$_SERVER['HTTP_REFERER'];
@@ -50,4 +52,7 @@ session_start();
 				}
             }
 		  }
+		}else {
+			header('Location: ../php/blogs.php');
+		}
 		  

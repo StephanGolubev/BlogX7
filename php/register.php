@@ -12,6 +12,10 @@ session_start();
        <header> 
  <?php 
  include('includes/navbar.php');
+
+		$token = md5(uniqid(rand(), TRUE));
+		$_SESSION['token'] = $token;
+
  ?>
 </header><br><br><br>
 	
@@ -35,6 +39,9 @@ session_start();
 	<br>
 	<h5>Password again:</h5><br>
 	<input  type="password" id="pass2" name="pass2" class="form-control" placeholder="Password again" required autofocus>
+
+	<input type="hidden" name="token" value="<?php echo $token; ?>" />
+
 	<br><br>
 	<div class="row">
 		<div id="int" class="col-12" style="text-align: center;">

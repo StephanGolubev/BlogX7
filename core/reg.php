@@ -6,6 +6,8 @@ $first = htmlspecialchars($_POST['fname']);
 $password = htmlspecialchars($_POST['pass1']);
 $password2 = htmlspecialchars($_POST['pass2']);
 
+if ($_POST['token'] == $_SESSION['token']){
+
 if ($password != $password2) {
   
   $error = '<div style="color: red;">Password does not match, Try again</div>';
@@ -68,4 +70,7 @@ if (trim($first," ") != null and trim($password," ") != null){
 	      $page_referrer=$_SERVER['HTTP_REFERER'];
         header('Location: '.$page_referrer);
   }
+}
+}else {
+  header('Location: ../php/blogs.php');
 }
