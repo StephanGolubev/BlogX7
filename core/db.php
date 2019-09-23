@@ -95,7 +95,7 @@ class DB {
 
 	// выбираем из базы по id и с разными названиями id
     public function selectWithIdVar($table,$nameID,$id){
-        $query = "SELECT * FROM `$table` WHERE $nameID=$id";
+        $query = "SELECT * FROM `$table` WHERE $nameID='$id'";
         return $this->query($query);
 	}
 	
